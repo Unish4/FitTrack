@@ -12,7 +12,12 @@ export const successResponse = (
 };
 
 export const errorResponse = (res, error, statusCode = 500) => {
-  return res.status(statusCode).json({
+  const resolvedStatusCode =
+    error && typeof error === "object" && error.statusCode
+      ? error.statusCode
+      : statusCode;
+
+  return res.status(resolvedStatusCode).json({
     success: false,
     error: typeof error === "string" ? error : error.message || "Server Error",
   });
