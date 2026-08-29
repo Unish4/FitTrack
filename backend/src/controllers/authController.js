@@ -12,7 +12,6 @@ import {
   uploadToCloudinary,
   deleteFromCloudinary,
 } from "../utils/cloudinaryUpload.js";
-import { NotBeforeError } from "jsonwebtoken";
 
 export const register = async (req, res) => {
   try {

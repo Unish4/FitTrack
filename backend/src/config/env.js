@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const requiredEnvVars = [
-  "MONGO_URI",
+  "MONGODB_URI",
   "JWT_SECRET",
   "JWT_EXPIRE",
   "CLOUDINARY_CLOUD_NAME",
@@ -20,7 +20,7 @@ for (const envVar of requiredEnvVars) {
 export const ENV = {
   PORT: process.env.PORT || 3000,
   NODE_ENV: process.env.NODE_ENV || "development",
-  MONGO_URI: process.env.MONGO_URI,
+  MONGODB_URI: process.env.MONGODB_URI,
   JWT_SECRET: process.env.JWT_SECRET,
   JWT_EXPIRE: process.env.JWT_EXPIRE,
   CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
