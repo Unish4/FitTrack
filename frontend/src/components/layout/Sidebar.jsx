@@ -28,9 +28,7 @@ export const Sidebar = () => {
     <aside className="hidden md:flex flex-col w-64 bg-slate-900 border-r border-slate-800/80 shrink-0 h-screen sticky top-0">
       {/* Brand Header */}
       <div className="h-16 px-6 flex items-center space-x-3 border-b border-slate-800/80">
-        <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-md">
-          <Activity className="w-5 h-5" />
-        </div>
+        <img src="/logo.png" alt="FitTrack" className="w-9 h-9 rounded-xl shadow-md border border-slate-800" />
         <div>
           <span className="font-extrabold text-white text-xl tracking-tight">FitTrack</span>
           <span className="block text-[10px] font-semibold text-emerald-400 uppercase tracking-widest">
