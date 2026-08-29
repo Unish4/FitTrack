@@ -10,6 +10,7 @@ import goalRoutes from "./routes/goalRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorHandler.js";
 import { arcjetMiddleware } from "./middleware/arcjet.js";
 import { ENV } from "./config/env.js";
+import { autoSeedPublicExercises } from "./utils/autoSeed.js";
 
 const app = express();
 
@@ -84,6 +85,7 @@ const PORT = ENV.PORT;
 const startServer = async () => {
   try {
     await connectDB();
+    await autoSeedPublicExercises();
     app.listen(PORT, () => {
       console.log("Fitness Tracker API");
       console.log(`Server: http://localhost:${PORT}`);
