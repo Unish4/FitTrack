@@ -15,13 +15,13 @@ export const ExerciseDetailModal = ({ isOpen, onClose, exercise }) => {
     >
       <div className="space-y-6">
         {/* Banner Image or Placeholder */}
-        <div className="w-full h-56 rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden relative flex items-center justify-center">
+        <div className="w-full h-36 rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden relative flex items-center justify-center">
           {exercise.image?.url ? (
             <img src={exercise.image.url} alt={exercise.name} className="w-full h-full object-cover" />
           ) : (
-            <div className="flex flex-col items-center justify-center text-slate-600 space-y-2">
-              <Dumbbell className="w-16 h-16 stroke-[1.5]" />
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            <div className="flex flex-col items-center justify-center text-slate-600 space-y-1">
+              <Dumbbell className="w-10 h-10 stroke-[1.5]" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
                 {exercise.muscleGroup}
               </span>
             </div>

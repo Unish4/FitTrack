@@ -54,7 +54,7 @@ export const Modal = ({
         </div>
 
         {/* Content Body */}
-        <div className="px-6 py-5 max-h-[75vh] overflow-y-auto">{children}</div>
+        <div className="px-6 py-5 max-h-[80vh] overflow-y-auto no-scrollbar">{children}</div>
       </div>
     </div>
   );
