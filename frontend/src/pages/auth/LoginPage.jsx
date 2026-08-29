@@ -48,8 +48,8 @@ export const LoginPage = () => {
       <div className="max-w-md w-full space-y-8 relative z-10">
         {/* Header Branding */}
         <div className="text-center space-y-3">
-          <div className="inline-flex w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 items-center justify-center text-emerald-400 shadow-xl">
-            <Activity className="w-8 h-8" />
+          <div className="inline-flex items-center justify-center">
+            <img src="/logo.png" alt="FitTrack Logo" className="w-14 h-14 rounded-2xl shadow-xl border border-slate-800" />
           </div>
           <h1 className="text-3xl font-extrabold text-white tracking-tight">
             Welcome back to <span className="text-emerald-400">FitTrack</span>
