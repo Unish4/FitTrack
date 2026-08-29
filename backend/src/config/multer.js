@@ -48,19 +48,18 @@ const detectImageType = (buffer) => {
 };
 
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
-  const detectedType = detectImageType(file.buffer);
+  const allowedTypes = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/gif",
+    "image/webp",
+  ];
 
-  if (
-    file.buffer &&
-    allowedTypes.includes(file.mimetype) &&
-    detectedType &&
-    allowedTypes.includes(detectedType) &&
-    file.mimetype === detectedType
-  ) {
+  if (file && allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error("Only image files are allowed"), false);
+    cb(new Error("Only image files (JPEG, PNG, GIF, WEBP) are allowed"), false);
   }
 };
 

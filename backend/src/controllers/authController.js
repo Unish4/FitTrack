@@ -245,7 +245,7 @@ export const changePassword = async (req, res) => {
     if (!isMatch) {
       return errorResponse(
         res,
-        new UnauthorizedError("Current password is incorrect"),
+        new BadRequestError("Current password is incorrect"),
       );
     }
 

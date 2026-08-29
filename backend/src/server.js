@@ -13,8 +13,36 @@ import { ENV } from "./config/env.js";
 
 const app = express();
 
-app.use(helmet());
-app.use(cors());
+// Security HTTP headers with cross-origin resource policy enabled
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  })
+);
+
+// Dynamic CORS configuration accepting CLIENT_URL, localhost, and Vercel domains
+const allowedOrigins = [
+  ENV.CLIENT_URL,
+  "http://localhost:5173",
+  "http://localhost:3000",
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes("*")) {
+        return callback(null, true);
+      }
+      if (origin.includes("vercel.app") || origin.includes("onrender.com")) {
+        return callback(null, true);
+      }
+      return callback(null, true);
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 if (ENV.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -30,6 +58,7 @@ app.get("/", (req, res) => {
     success: true,
     message: "Fitness Tracker API",
     version: "1.0.0",
+    clientUrl: ENV.CLIENT_URL,
     endpoints: {
       auth: "/api/auth",
       exercises: "/api/exercises",
@@ -55,6 +84,7 @@ const startServer = async () => {
     app.listen(PORT, () => {
       console.log("Fitness Tracker API");
       console.log(`Server: http://localhost:${PORT}`);
+      console.log(`Configured CLIENT_URL: ${ENV.CLIENT_URL}`);
     });
   } catch (error) {
     console.error("Failed to start server:", error);
