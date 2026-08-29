@@ -29,3 +29,17 @@ export const changePasswordApi = async (data) => {
   const response = await api.patch('/auth/change-password', data);
   return response.data;
 };
+
+export const uploadAvatarApi = async (formData) => {
+  const response = await api.post('/auth/avatar', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return response.data;
+};
+
+export const deleteAvatarApi = async () => {
+  const response = await api.delete('/auth/avatar');
+  return response.data;
+};
